@@ -54,7 +54,7 @@
                 </el-col>
                 <el-col :xs="5" :sm="5" :md="5" :lg="5" :xl="5">
                   <el-menu-item index="/video" class="el-icon-video-play"
-                    >视频</el-menu-item
+                    >电影</el-menu-item
                   >
                 </el-col>
                 <el-col :xs="5" :sm="5" :md="5" :lg="5" :xl="5">

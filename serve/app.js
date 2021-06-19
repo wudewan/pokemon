@@ -121,7 +121,18 @@ server.get('/pokemon', (req, res) => {
     // 返回数据到客户端
     res.send({ message: 'ok', code: 200, result: results});
   });
+});
 
+//获取轮播图图片的接口
+server.get('/pokemon_carousel', (req, res) => {
+  // SQL查询
+  let sql = "SELECT * from carousel";
+  // 执行SQL查询
+  pool.query(sql,(error, results) => {
+    if (error) throw error;
+    // 返回数据到客户端
+    res.send({ message: 'ok', code: 200, result: results});
+  });
 });
 
 // 指定服务器对象监听的端口号
