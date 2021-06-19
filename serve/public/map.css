@@ -1,0 +1,453 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+table{
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+    border-spacing: 2px;
+    background-color: pink;
+    border-radius: 10px;
+    border: 2px solid rgb(193, 250, 60);
+}
+
+table td{
+    /* border: 1px solid rgb(193, 250, 60); */
+    background-color: white;
+}
+
+table th{
+    font-size: 15px;
+    padding: 5px;
+}
+
+caption{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.name{
+    /* padding: 10px; */
+    text-align: center;
+    width: 100px;
+}
+
+.name a{
+    margin: 0 auto;
+    text-decoration: none;
+    /* text-align: center; */
+    /* line-height: center; */
+}
+
+.td1{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -136px 0px;
+}
+
+.td2{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -204px 0px;
+}
+
+.td3{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -272px 0px;
+}
+
+.td4{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -408px 0px;
+}
+
+.td5{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -476px 0px;
+}
+
+.td6{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -544px 0px;
+}
+
+.td7{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -816px 0px;
+}
+
+.td8{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -884px 0px;
+}
+
+.td9{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -952px 0px;
+}
+
+.td10{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1088px 0px;
+}
+
+.td11{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1156px 0px;
+}
+
+.td12{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1224px 0px;
+}
+
+.td13{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1360px 0px;
+}
+
+.td14{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1428px 0px;
+}
+
+.td15{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1496px 0px;
+}
+
+.td16{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1632px 0px;
+}
+
+.td17{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1700px 0px;
+}
+
+.td18{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1768px 0px;
+}
+
+.td19{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1904px 0px;
+}
+
+.td20{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: 0px -56px;
+}
+
+.td21{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -204px -56px;
+}
+
+.td22{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -272px -56px;
+}
+
+.td23{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -340px -56px;
+}
+
+.td24{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -408px -56px;
+}
+
+.td25{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -474px -56px;
+}
+
+.td26{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1562px -56px;
+}
+
+.td27{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1698px -56px;
+}
+
+.td28{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1834px -56px;
+}
+
+.td29{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -1970px -56px;
+}
+
+.td30{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: 0px -112px;
+}
+
+.td31{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -68px -112px;
+}
+
+.td32{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -136px -112px;
+}
+
+.td33{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -204px -112px;
+}
+
+.td34{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -270px -112px;
+}
+
+.td35{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -338px -112px;
+}
+
+.td36{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -406px -112px;
+}
+
+.td37{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -474px -112px;
+}
+
+.td38{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -610px -112px;
+}
+
+.td39{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -746px -112px;
+}
+
+.td40{
+    display:inline-block;
+    background-image: url("../精灵图68x56.png");
+    width: 68px;
+    height: 56px;
+    background-position: -814px -112px;
+}
+
+#final-left{
+    border-radius: 0 0 0 10px;
+}
+
+#final-right{
+    border-radius: 0 0 10px 0;
+}
+/* 草系 */
+.grass{
+    background-color: green;
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+/* 毒系 */
+.poison{
+    background-color: purple;
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+/* 火系 */
+.fire{
+    background-color: red;
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+/* 飞行系 */
+.fly{
+    background-color: rgb(133, 204, 236);
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+/* 水系 */
+.water{
+    background-color: rgb(65, 63, 226);
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+/* 虫系 */
+.insect{
+    background-color: rgb(6, 78, 10);
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+/* 一般系 */
+.general{
+    background-color: rgba(184, 196, 184, 0.966);
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+/* 电系 */
+.electricity{
+    background-color: rgba(250, 174, 11, 0.966);
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+/* 地面系 */
+.ground{
+    background-color: rgba(206, 188, 151, 0.966);
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+/* 妖精系 */
+.demon{
+    background-color: rgb(241, 120, 140);
+    width: 70px;
+    height: 50px;
+    text-align: center;
+    color: white;
+}

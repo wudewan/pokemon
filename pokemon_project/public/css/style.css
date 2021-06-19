@@ -1,0 +1,37 @@
+body, html {
+  display: grid;
+  height: 100%;
+  background: #333844;
+}
+
+/* body {
+  color: white;
+  background: #333844;
+  padding: 0px;
+  font-family: "Heebo", sans-serif;
+} */
+/* 
+h1 {
+  text-indent: -9999em;
+  background-image: url(https://assets.codepen.io/13471/poke-logo.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 50vw;
+  height: 60vh;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* p {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translate(-50%, -50%);
+}
+
+a {
+  color: turquoise;
+} */

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../data/data.js"></script>
+    <title>Document</title>
+    <style>
+        .z-fh::before {
+            content: "#";
+        }
+
+        .col-4>div {
+            border: 2px solid #000;
+            /* margin: 0 1px 1px 0; */
+            font-size: 14px;
+            margin: 1px 0;
+        }
+
+        .bg-warning{
+            background-color: rgb(238, 162, 204) !important;
+            box-shadow: 2px 2px 5px #000;
+            border-radius: 7px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row z-poke" id="poke"></div>
+    </div>
+
+    <script>
+        var poke = document.getElementById('poke');
+        var pokejson = data;
+        var str="";
+        console.log(pokejson);
+        for(var i=0;i<pokejson.length;i++){
+            str+=`<div class="col-4 p-1">
+                <div class="bg-warning  p-1 ">
+                    <div class="d-flex justify-content-between">
+                        <span class="bg-white rounded p-2 m-1 font-weight-bold">
+                            ${pokejson[i].name}
+                        </span>
+                        <span class="z-fh bg-white rounded p-2 m-1 font-weight-bold">
+                            ${pokejson[i].id}
+                        </span>
+                    </div>
+                    <img src="./img/${pokejson[i].id}.png" class="w-100">
+                </div>
+                </div>`;
+        }
+        poke.innerHTML=str;
+    </script>
+</body>
+
+</html>

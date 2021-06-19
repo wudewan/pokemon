@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <script>
+        function reg(){
+            var u1=document.getElementById("uname").value;
+            var u2=document.getElementById("upwd").value;
+            var u3=document.getElementById("phone").value;
+            var u4=document.getElementById("email").value;
+            var u5=document.getElementById("avatar").value;
+            var u6=document.getElementById("user_name").value;
+            var u7=document.getElementById("gender").value;
+
+            var xhr=new XMLHttpRequest();
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4 && xhr.status===200){
+                    var msg=document.getElementById("msg");
+                    var obj=JSON.parse(xhr.responseText);
+                    msg.innerHTML=obj.msg;
+                }
+            }
+            xhr.open("post","http://127.0.0.1:8080/v1/users/reg",true);
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            var formdata=`uid=null&uname=${u1}&upwd=${u2}&phone=${u3}&email=${u4}&avatar=${u5}&user_name=${u6}&gender=${u7}`;
+            xhr.send(formdata);
+        }
+    </script>
+</head>
+<body>
+    <h1>用户注册</h1>
+    <h1 id="msg" style="color: red;"></h1>
+    <form action="#">
+        昵称<input type="text" id="uname" name="uname"><br>
+        密码<input type="password" id="upwd" name="upwd"><br>
+        手机<input type="text" id="phone" name="phone"><br>
+        邮箱<input type="text" id="email" name="email"><br>
+        头像<input type="file" id="avatar" name="avatar"><br>
+        真实姓名<input type="text" id="user_name" name="user_name"><br>
+        性别<input type="text" id="gender" name="gender"><br>
+        <input type="button" id="btn" value="注册" onclick="reg()">
+    </form>
+</body>
+</html>
