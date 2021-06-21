@@ -37,6 +37,16 @@ server.use(cors({
   origin: ['http://localhost:8080', 'http://127.0.0.1:8080']
 }));
 
+//获取index首页的内容的接口
+server.get('/index',(req,res)=>{
+  let sql = 'SELECT * FROM pokemon_index';
+  pool.query(sql,(error,result)=>{
+    if(error) throw error;
+    res.send({message:'ok',code:200,result:result})
+  })
+})
+
+
 // 顺序获取宝可梦的编号姓名和图片的接口
 server.get('/pokemon_page', (req, res) => {
   // 获取客户端传递的page参数
@@ -132,6 +142,15 @@ server.get('/pokemon_carousel', (req, res) => {
     if (error) throw error;
     // 返回数据到客户端
     res.send({ message: 'ok', code: 200, result: results});
+  });
+});
+
+//获取电影栏的信息
+server.get('/movies',(req,res)=>{
+  let sql = "SELECT * FROM movies";
+  pool.query(sql,(error,results)=>{
+    if(error) throw error;
+    res.send({message:'ok', code:200,result:results});
   });
 });
 

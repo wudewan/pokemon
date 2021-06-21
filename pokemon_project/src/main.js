@@ -10,7 +10,6 @@ import 'element-ui/lib/theme-chalk/display.css';
 import infiniteScroll from 'vue-infinite-scroll';
 import VuevideoPlayer from 'vue-video-player';
 import 'video.js/dist/video-js.css';
-
 Vue.use(VuevideoPlayer);
  
 Vue.use(infiniteScroll);
