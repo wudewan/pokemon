@@ -1,0 +1,19 @@
+/* 电影页面样式 */
+.shell .el-aside .menu .el-dropdown{
+  display: block;
+  margin: 20px auto;
+}
+.shell .container2 .el-main .accordion{
+  width:99%;
+  margin-top:10px;
+}
+.shell .container2 .el-main .el-collapse-item__header{
+  color: #fff;
+  font-size: 20px;
+  padding-left:10px;
+  background-color: rgb(255, 150, 0);
+}
+.shell .container2 .el-main .el-collapse-item__content{
+  padding-top: 20px;
+  background-color: rgb(255, 245, 225);
+}

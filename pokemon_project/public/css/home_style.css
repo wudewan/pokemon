@@ -1,0 +1,109 @@
+/* 首页的样式 */
+.shell .el-aside {
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+}
+.shell .el-aside .d1 {
+  position: fixed;
+  width: 18%;
+}
+.shell .el-aside .aside_header {
+  text-align: center;
+}
+.shell .el-aside .menu{
+  margin: 0 auto;
+  text-align:left;
+  width: 100%;
+}
+.shell .el-aside .menu ul li {
+  margin: 20px 0;
+}
+.shell .el-aside .menu a {
+  margin-left: 25%;
+  text-decoration: none;
+  font-size: 16px;
+  color: aquamarine;
+}
+.shell .container1 .el-aside img {
+  width: 60%;
+}
+.shell .el-header {
+  background-color: #333844;
+  position: fixed;
+  z-index: 10;
+  width: 76%;
+}
+.shell .el-menu .el-menu-item {
+  padding: 10px 3px;
+  font-size: 20px;
+  line-height: 35px;
+}
+.shell .container2 .el-button {
+  margin-top: 7px;
+}
+.shell .container2 .el-main {
+  margin-top: 40px;
+  width: 93%;
+}
+.shell .container2 .el-main .carousel {
+  margin: 20px auto;
+  width: 100%;
+  height: 210px;
+  border: 3px solid #5f9ea0;
+  overflow: hidden;
+  border-radius: 25px;
+}
+.shell .container2 .el-main .carousel ul {
+  list-style: none;
+  width: 61200px;
+  animation: 250s move linear infinite;
+}
+.shell .container2 .el-main .carousel ul:hover {
+  animation-play-state: paused;
+}
+.shell .container2 .el-main .carousel ul li {
+  float: left;
+}
+.shell .container2 .el-main .carousel li img {
+  width: 200px;
+}
+
+@keyframes move {
+  0% {
+  }
+  100% {
+    transform: translateX(-30600px);
+  }
+}
+.shell .container2 .el-main .overview,.shell .container2 .el-main .game{
+  padding-top:60px;
+  margin-top:-60px;
+  margin-bottom: 50px;
+}
+.shell .container2 .el-main .overview p,
+.shell .container2 .el-main .game p {
+  margin: 10px 0;
+  color: #add8e6;
+  text-indent: 40px;
+  font-size: 18px;
+}
+.shell .container2 .difference {
+  color: #add8e6;
+  padding-top:45px;
+  margin-top:-45px;
+}
+.shell .container2 .difference ul{
+  list-style-type: none;
+}
+.shell .container2 .difference p {
+  margin-top: 20px;
+  font-size: 30px;
+  color: #33cccc;
+  font-family: "楷体";
+  display: inline-block;
+  font-weight: bolder;
+}
+.shell .container2 .difference li {
+  margin: 10px 0;
+}

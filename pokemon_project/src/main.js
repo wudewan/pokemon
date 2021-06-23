@@ -7,14 +7,8 @@ import moment from "moment"
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'element-ui/lib/theme-chalk/display.css';
-import infiniteScroll from 'vue-infinite-scroll';
-import VuevideoPlayer from 'vue-video-player';
-import 'video.js/dist/video-js.css';
-Vue.use(VuevideoPlayer);
- 
-Vue.use(infiniteScroll);
+import bus from './bus';
 //引入axios
-axios.defaults.baseURL="http://localhost:3000"
 Vue.prototype.axios = axios;
 Vue.config.productionTip = false
 
@@ -23,6 +17,9 @@ Vue.prototype.moment=moment;
 
 //引入elementui
 Vue.use(ElementUI);
+
+//引入bus
+Vue.prototype.bus = bus;
 
 new Vue({
   router,

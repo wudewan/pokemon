@@ -20,7 +20,7 @@
           <el-collapse-item :id="item.mid" v-for="item,index in movies" :title="item.mtitle" :name="item.mid" :key="index">
             <img :src="item.mimg" width="70%" style="display:block;margin:0px auto;">
             <p style="font-size:17px">{{item.mcontent}}</p>
-            <el-button type="info" round  style="display:block;margin:0px auto;width:50%;position:relative;">{{item.mtitle}}<i class="el-icon-arrow-right el-icon--right" style="position:absolute;right:10px;"></i></el-button>
+            <el-button type="info" round  style="display:block;margin:0px auto;width:50%;position:relative;" @click="send_mid(`${item.mid}`)">{{item.mtitle}}<i class="el-icon-arrow-right el-icon--right" style="position:absolute;right:10px;"></i></el-button>            
           </el-collapse-item>              
         </el-collapse>
       </div>
@@ -36,17 +36,20 @@ export default {
     return {
       activeIndex: "/movies",
       movies:[],
-      activeName:1
+      activeName:1,
     }
   },
   methods: {
     change_page(command){
       this.activeName = command;
+    },
+    send_mid(mid){
+      this.$router.push(`/movies_details/${mid}`);
     }
   },
   mounted() {
     //加载完成后获取服务器电影栏的信息
-      this.axios.get(`/movies`).then(result=>{
+      this.axios.get(`/api/movies`).then(result=>{
       let movies = result.data.result;
       movies.forEach(item=>{
         item.mimg = require("../assets/movies/"+item.mimg)

@@ -132,24 +132,16 @@ export default {
     get_page_1(val){
       this.page_number = val;
       let page = this.page_number;
-      this.axios.get(`/pokemon_page?page=${page}`).then(result=>{
-      //  console.log(result.data.results);
-       let pokemon = result.data.results
-        pokemon.forEach(item=>{
-        if(item.purl != null && item.pattr != null){
-          item.purl = require("../assets/img/"+item.purl);
-           item.pattr = require("../assets/attr/"+item.pattr);
-        }
+      this.load_pokemon(page).then((result)=>{
+        this.pokemon = result;
       })
-      this.pokemon = pokemon;
-    })
-    scrollTo(0,0);
+      scrollTo(0,0);
     },
     //默认或者用户选中从大到小排序时,切换页面调用此方法
     get_page_2(val){
       this.page_number = val;
       let page = this.page_number;
-      this.axios.get(`/pokemon_page_desc?page=${page}`).then(result=>{
+      this.axios.get(`/api/pokemon_page_desc?page=${page}`).then(result=>{
         let pokemon = result.data.results
         pokemon.forEach(item=>{
           if(item.purl != null && item.pattr != null){
@@ -180,7 +172,7 @@ export default {
     },
     //用户在输入框内输入内容失去焦点或者按下回车后触发,显示特定的宝可梦图片
     search(){
-      this.axios.get(`/search?pname=${this.input}&pid=${this.input}`).then(result=>{
+      this.axios.get(`/api/search?pname=${this.input}&pid=${this.input}`).then(result=>{
         let pokemon = result.data.result;
         if(pokemon.length == 0 && this.input!=""){
           this.open_message();
@@ -207,25 +199,35 @@ export default {
           position: 'top-left',
           type:"warning"
         });
-      },
+    },
+
+    //封装请求分页的方法
+    load_pokemon(page){
+      return new Promise((resolve,reject)=>{
+        this.axios.get(`/api/pokemon_page?page=${page}`).then(result=>{
+          this.pageCount = result.data.pagecount * 10;
+          let pokemon = result.data.results;
+          pokemon.forEach(item=>{  //遍历请求回来的数据,处理文件路径
+            if(item.purl != null && item.pattr != null){
+              item.purl = require("../assets/img/"+item.purl);
+              item.pattr = require("../assets/attr/"+item.pattr);
+            }
+          });
+          resolve(pokemon);
+        })
+      })
+    }
   },
 
   mounted() {
     //设置每张卡牌的高度为屏幕的高度的31%
     this.height = (window.screen.height)*0.31+"px";
 
+
     //页面加载后展现第一页的内容
     let page = this.page_number;
-    this.axios.get(`/pokemon_page?page=${page}`).then(result=>{
-       this.pageCount = result.data.pagecount *10; //总页码数
-       let pokemon = result.data.results;
-        pokemon.forEach(item=>{  //遍历请求回来的数据,处理文件路径
-        if(item.purl != null && item.pattr != null){
-          item.purl = require("../assets/img/"+item.purl);
-          item.pattr = require("../assets/attr/"+item.pattr);
-        }
-      })
-      this.pokemon = pokemon;
+    this.load_pokemon(page).then((result)=>{
+      this.pokemon = result;
     })
   },
 };

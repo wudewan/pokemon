@@ -51,7 +51,7 @@ export default {
   },
   mounted() {
     //获取所有宝可梦图片
-    this.axios.get("/pokemon").then(result=>{
+    this.axios.get("/api/pokemon").then(result=>{
       let pokemon = result.data.result;
       pokemon.forEach(item=>{
         if(item.purl != null){
@@ -68,7 +68,7 @@ export default {
     })
 
     //获取所有首页页面文字信息
-    this.axios.get("/index").then(result=>{
+    this.axios.get("/api/index").then(result=>{
       this.index = result.data.result[0];
       console.log(this.index);
     })

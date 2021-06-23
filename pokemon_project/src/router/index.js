@@ -24,7 +24,25 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "video" */ '../views/Movies.vue')
+    props:true,
+    component: () => import(/* webpackChunkName: "movies" */ '../views/Movies.vue')
+  },
+  {
+    path: '/movies_details/:mid',
+    name: 'Movies_details',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    props:true,
+    component: () => import(/* webpackChunkName: "movies_01" */ '../views/Movies_details.vue')
+  },
+  {
+    path: '/testing',
+    name: 'testing',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "movies_01" */ '../components/testing.vue')
   }
 ]
 
