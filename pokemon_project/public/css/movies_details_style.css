@@ -1,0 +1,43 @@
+  .el-drawer__body {
+    background-color: #ff9600;
+  }
+  .shell .small_img {
+    text-align: center;
+    width: 25%;
+    margin-left:16%;
+    margin-top:20px;
+    display:inline-block;
+  }
+  .shell .small_img .img_1{
+    transition: 1s linear;
+  }
+  .shell .small_img :hover{
+    cursor: pointer;
+    transform: scale(1.5);
+  }
+  .shell .el-main .el-drawer__body .drawer{
+    width: 100%; position: relative; height: 300px
+  }
+  .shell .article{
+    position:relative;
+  }
+  .shell .article .article_1{
+    color: #add8e6; font-size: 18px;
+  }
+  .shell .article .article_1 img{
+    position:absolute;left:0;top:25px;width: 2%;
+  }
+  .shell .article .article_1 .img :hover{
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+  .shell .article .article_1 .title{
+    text-align: center; font-size: 25px; margin:20px auto;width:70%;
+  }
+  .shell .article .article_1 .inner{
+    text-indent: 40px; margin-top: 20px
+  }
+  
+  .shell .article .story_img{
+    text-align: center; margin-top: 12%;
+  }

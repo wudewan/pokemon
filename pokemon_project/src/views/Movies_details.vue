@@ -2,7 +2,7 @@
   <shell>
     <template #menu>
       <div v-for="item,index in small_img" :key="index" :id="index" class="small_img">
-        <img
+        <img class="img_1"
           :src="item"
           style="width: 100%; border-radius: 50%; box-shadow: 3px 3px 5px #000;"
           @click="is_drawer"
@@ -14,13 +14,13 @@
           :with-header="false"
         >
         <div class="drawer">
-          <div class="drawer_1">
-            <div>{{p_name[i]}}</div>
-            <p>
+          <div class="drawer_1" style="  position: absolute;width: 70%;top:5%;left: 50%;transform:translateX(-50%);color: #fff;font-size:1.5vw">
+            <div style="display:flex;justify-content: center;">{{p_name[i]}}</div>
+            <p style="font-size:1.2vw">
               {{p_intr[i]}}
             </p>
           </div>
-          <div class="drawer_2">
+          <div class="drawer_2" style="position: absolute; width: 70%; top: 30%; right: 50%;transform:translateX(50%)">
             <img
               :src="big_img[i]"
               width="100%"
@@ -35,7 +35,7 @@
         <el-row>
           <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
             <div class="article_1">
-              <el-button icon="el-icon-back" circle  @click="back"></el-button>
+              <div class="img"><img src="../../public/img/back.png" @click="back"></div>
               <div class="title">
                 {{title}}
               </div>
@@ -126,51 +126,5 @@ export default {
 };
 </script>
 <style>
-.el-drawer__body {
-  background-color: #ff9600;
-}
-.small_img{
-  text-align: center;
-  width: 25%;
-  margin-left:16%;
-  margin-top:20px;
-  display:inline-block
-}
-.small_img :hover{
-  cursor: pointer;
-  transition: 1s linear;
-  transform: scale(1.5);
-}
-.el-drawer__body .drawer{
-  width: 100%; position: relative; height: 300px
-}
-.el-drawer__body .drawer .drawer_1{
-  position: absolute;width: 40%;top: 25%;left: 10%;color: #fff;
-}
-.el-drawer__body .drawer .drawer_1 >div{
-  margin: 10px 0; font-size: 25px;
-}
-.el-drawer__body .drawer .drawer_2{
-  position: absolute; width: 50%; top: 25%; right: 0%;
-}
 
-.article{
-  position:relative;
-}
-.article .article_1{
-  color: #add8e6; font-size: 18px;
-}
-.article .article_1 .el-button{
-  position:absolute;left:0;top:0
-}
-.article .article_1 .title{
-  text-align: center; font-size: 25px; margin:20px auto;width:70%;
-}
-.article .article_1 .inner{
-  text-indent: 40px; margin-top: 20px
-}
-
-.article .story_img{
-  text-align: center; margin-top: 12%;
-}
 </style>

@@ -25,7 +25,7 @@
                 v-for="item,i in pokemon"
                 :key="i"
               >
-                <div class="photo_frame" :style="{height:height}">
+                <div class="photo_frame" style="height:18vw">
                   <span class="number">{{item.pid}}</span>
                   <span class="pname">{{item.pname}}</span>
                   <div class="d2"><img src="https://cn.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" class="bg"/></div> 
@@ -52,7 +52,7 @@
                 :xl="6"
                 v-for="item,i in pokemon"
                 :key="i">
-                <div class="photo_frame" :style="{height:height}">
+                <div class="photo_frame" style="height:18vw">
                   <span class="number">{{item.pid}}</span>
                   <span class="pname">{{item.pname}}</span>
                   <div class="d2"><img src="https://cn.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" class="bg"/></div> 
@@ -78,13 +78,13 @@
                 :lg="6"
                 :xl="6"
                 >
-                <div class="photo_frame" :style="{height:height}">
+                <div class="photo_frame" style="height:18vw">
                   <span class="number">{{search_pokemon[0].pid}}</span>
                   <span class="pname">{{search_pokemon[0].pname}}</span>
                   <div class="d2"><img src="https://cn.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" class="bg"/></div> 
                   <img :src="search_pokemon[0].purl" class="pk"/>
                   <div class="attribute"></div>
-                  <img :src="search_pokemon[0].pattr" class="attribute_img" :style="{height:height}">                 
+                  <img :src="search_pokemon[0].pattr" class="attribute_img">                 
                 </div>
               </el-col>
             </el-row>
@@ -100,7 +100,6 @@ export default {
   data() {
     return {
       activeIndex: "/map",           //当前所显示的导航栏
-      height:"",                     //动态设置相框的高度
       pokemon:[],                    //保存请求回来的数据库pokemon表中的数据
       input:"",                      //保存当前输入框的内容
       page_number:1,                 //当前页面的页码
@@ -220,10 +219,6 @@ export default {
   },
 
   mounted() {
-    //设置每张卡牌的高度为屏幕的高度的31%
-    this.height = (window.screen.height)*0.31+"px";
-
-
     //页面加载后展现第一页的内容
     let page = this.page_number;
     this.load_pokemon(page).then((result)=>{

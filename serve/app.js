@@ -168,6 +168,21 @@ server.get('/movies_details',(req,res)=>{
   })
 })
 
+//获取产品信息的接口
+server.get('/pk_products',(req,res)=>{
+  let category = req.query.category;
+  let sql;
+  if(!category){
+    sql = 'SELECT * FROM pk_products';
+  }else{
+    sql = 'SELECT * FROM pk_products WHERE category=?'
+  }
+  pool.query(sql,[category],(err,result)=>{
+    if(err) throw err;
+    res.send({message:'ok',code:200,result:result});
+  })
+})
+
 
 
 
@@ -179,15 +194,17 @@ const formidable = require("express-formidable");
 let path = require("path");
 server.use(formidable());
 server.post("/upload",(req,res)=>{
+  console.log(req.files);
   let oldP=req.files.file.path;
   var userId = 1;
   var f1 = path.join($dirname + "/upload_avatar/" + userId + "/");
-  if(!fs.existsSync(f1)){
-    fs.mkdirSync(f1);
-  }
-  let newP=f1+req.files.file.name;
+  let exts=req.files.file.name.split('.');
+  let ext=exts[exts.length-1];
+  let tepname=(new Date()).getTime()+parseInt(Math.random()*9999);
+  let newP=f1+tepname+"."+ext;
+
   console.log(newP);
-  console.log(req.files.file.name);
+  // console.log(req.files.file.name);
   fs.rename(oldP,newP,()=>{
 
   })

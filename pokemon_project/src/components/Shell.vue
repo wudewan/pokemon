@@ -48,7 +48,7 @@
                   >
                 </el-col>
                 <el-col :xs="5" :sm="5" :md="5" :lg="5" :xl="5">
-                  <el-menu-item index="/shopping" class="el-icon-shopping-cart-2"
+                  <el-menu-item index="/products" class="el-icon-shopping-cart-2"
                     >周边商城</el-menu-item
                   >
                 </el-col>
@@ -70,9 +70,7 @@
           <!-- 回到顶部 -->
           <el-backtop style="background-color: transparent">
             <img
-              src="https://s1.52poke.wiki/wiki/thumb/c/ca/%E5%AF%B6%E5%8F%AF%E5%A4%A2%E5%9C%96%E9%91%91_SM.png/75px-%E5%AF%B6%E5%8F%AF%E5%A4%A2%E5%9C%96%E9%91%91_SM.png"
-              alt=""
-            />
+              src="https://s1.52poke.wiki/wiki/thumb/c/ca/%E5%AF%B6%E5%8F%AF%E5%A4%A2%E5%9C%96%E9%91%91_SM.png/75px-%E5%AF%B6%E5%8F%AF%E5%A4%A2%E5%9C%96%E9%91%91_SM.png"/>
           </el-backtop>
         </el-main>
       </el-container>
@@ -88,4 +86,5 @@ export default {
 @import '../../public/css/home_style.css';
 @import '../../public/css/map_style.css';
 @import '../../public/css/movies_style.css';
+@import '../../public/css/movies_details_style.css';
 </style>

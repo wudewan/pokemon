@@ -3,6 +3,12 @@
   display: block;
   margin: 20px auto;
 }
+.shell .el-aside .menu .el-button--primary{
+  width: 80%;
+  font-size: 1vw;
+  overflow: hidden;
+}
+
 .shell .container2 .el-main .accordion{
   width:99%;
   margin-top:10px;
@@ -14,6 +20,6 @@
   background-color: rgb(255, 150, 0);
 }
 .shell .container2 .el-main .el-collapse-item__content{
-  padding-top: 20px;
+  padding: 20px;
   background-color: rgb(255, 245, 225);
 }
