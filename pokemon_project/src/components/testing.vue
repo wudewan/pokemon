@@ -12,7 +12,7 @@
         </el-upload>
 
         
-    <!-- <img src="../../../serve/upload_avatar/1/00b2e259575a7da8012193a331099a.jpg" alt=""> -->
+    <!-- <img src="../../../serve/upload_avatar/1/1624696134058.jpg" alt=""> -->
   </div>
 </template>
 <script>

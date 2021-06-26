@@ -15,15 +15,18 @@
       <el-row>
         <el-col v-for="(item, index) in products" :key="index" :xs="12" :sm="8" :md="8" :lg="6" :xl="6" style="padding:0.3vw">
           <el-card :body-style="{ padding: '0px' }">
-            <img :src="item.products_img" class="image">
-            <div style="padding: 14px;">
-              <span style="font-size:0.9vw;">{{item.products_description}}</span>
-              <div class="bottom">
-                <time class="time">{{ currentDate }}</time>
-                <p class="price_now">¥{{item.new_price.toFixed(2)}}</p>
-                <p class="price_ago">¥{{item.old_price.toFixed(2)}}</p>
+            <div @click="goto_details(index+1)">
+              <img :src="item.products_img" class="image">
+              <div style="padding: 14px;">
+                <span style="font-size:0.9vw;">{{item.products_description}}</span>
+                <div class="bottom">
+                  <time class="time">{{ currentDate }}</time>
+                  <p class="price_now">¥{{item.new_price.toFixed(2)}}</p>
+                  <p class="price_ago">¥{{item.old_price.toFixed(2)}}</p>
+                </div>
               </div>
             </div>
+            
           </el-card>
         </el-col>
       </el-row>
@@ -69,6 +72,10 @@ export default {
         this.products = res;
       });
       command == "" ? this.type="所有" : command == "clothes" ? this.type = "衣服丶饰品类" : command == "life" ? this.type = "寝具、家具、生活杂货类" : command == "food" ? this.type="食品类" : command == "toy" ? this.type = "玩具、玩偶、模型类" : this.type = "其他";
+    },
+
+    goto_details(index){
+      this.$router.push(`/products_details/${index}`);
     }
   }
 }
@@ -84,7 +91,7 @@ export default {
   }
   
   .bottom {
-    margin-top: 13px;
+    margin-top: 8px;
     line-height: 12px;
     position: relative;
   }
@@ -119,6 +126,7 @@ export default {
 
   .el-col  :hover .image{
     transform: scale(1.1);
+    
   }
   .el-card .image,.el-card > div{
     cursor: pointer;

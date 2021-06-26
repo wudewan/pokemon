@@ -128,3 +128,29 @@ INSERT INTO pk_products(id,category,products_img,products_description,new_price,
 (14,"food","14.jpg","味全乳酸菌宝可梦授权系列产品（原味/草莓/芦荟/低糖/西瓜/芒果）","6.5","9"),
 (15,"life","15.jpg","APIYOO荷兰艾优皮卡丘声波电动牙刷正式上市","398","479"),
 (16,"toy","16.jpg","12+积木品牌keepplay携6款超卡哇伊的宝可梦积木玩偶火热来袭","39","79");
+
+CREATE TABLE products_details(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    small_img VARCHAR(70),
+    big_img VARCHAR(70),
+    magnify_img VARCHAR(70),
+    title VARCHAR(100)
+);
+
+INSERT INTO products_details(id,small_img,big_img,magnify_img,title) VALUES
+(1,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","【宝可梦联名款皮卡丘】精臣D110家用标签打印机智能标签机可连手机姓名贴纸便签手持蓝牙热敏打印机便携式"),
+(2,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","TOMY多美卡宠物小精灵宝可梦聚会整蛊木桶桌游戏玩具皮卡丘869559"),
+(3,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","三棵树BB漆宝可梦联名系列（悦享装/臻享装/尊享装/尊享mini装）"),
+(4,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","Unique Art 《宝可梦》授权雕像 小火龙"),
+(5,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","宝可梦收纳包 for Nintendo Switch “Pikachu＆Friends” 和 “Stars”　"),
+(6,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","宝可梦Nintendo Switch Joy-Con充电座与保护壳套组"),
+(7,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","小米移动电源3 10000mAh 快充版,小米旅行箱20英寸 皮卡丘定制款"),
+(8,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","青蛙儿童牙刷牙膏"),
+(9,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","宝可梦密胺餐具"),
+(10,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","宝可梦授权外设"),
+(11,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","adidas neo宝可梦联名款"),
+(12,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","CHERRY 键盘"),
+(13,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","好奇铂金装纸尿裤/成长裤"),
+(14,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","味全活性乳酸菌饮品"),
+(15,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","APIYOO荷兰艾优电动牙刷皮卡丘网红声波电动牙刷成人男女充电式"),
+(16,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","keepplay宝可梦积木玩偶");
