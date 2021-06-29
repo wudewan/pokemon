@@ -195,6 +195,27 @@ server.get('/products_details',(req,res)=>{
 })
 
 
+//插入评论的接口
+server.post('/pk_comments',(req,res)=>{
+  let score = req.body.score;
+  let content = req.body.content;
+  // console.log(score)
+  let sql = 'INSERT INTO comments(content,score) VALUES(?,?)'
+  pool.query(sql,[content,score],(err,result)=>{
+    if(err) throw err;
+    res.send({message:"ok",code:200});
+  })
+})
+
+//获取评论的接口
+server.get("/pk_comments",(req,res)=>{
+  let sql = 'SELECT * FROM comments';
+  pool.query(sql,(err,result)=>{
+    if(err) throw err;
+    res.send({message:"ok",code:200,result:result});
+  })
+})
+
 
 //获取上传头像保存在upload_avatar文件夹下,根据注册ID分文件夹保存
 global.$dirname = __dirname;
