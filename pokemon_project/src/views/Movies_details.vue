@@ -16,7 +16,7 @@
         <div class="drawer">
           <div class="drawer_1" style="  position: absolute;width: 70%;top:5%;left: 50%;transform:translateX(-50%);color: #fff;font-size:1.5vw">
             <div style="display:flex;justify-content: center;">{{p_name[i]}}</div>
-            <p style="font-size:1.2vw">
+            <p style="font-size:1.2vw;margin-top:10px;text-indent:2em">
               {{p_intr[i]}}
             </p>
           </div>

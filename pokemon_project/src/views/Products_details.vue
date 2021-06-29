@@ -32,15 +32,31 @@
                     </div>
                 </el-col>
                 <el-col :xs="12" :sm="12" :md="12" :lg="12" :xl="12">
-                    <div class="right_products" style="margin:3vw 2.5vw;font-size:20px;color:#fff">
+                    <div class="right_products" style="margin:3vw 3vw;font-size:20px;color:#fff;width:30vw">
                         <div>{{title}}</div>
-                        <div style="width:100%;height:30px;margin-top:20px;padding: 0 15px;border-radius:3px; background-image: linear-gradient(to right, #808080 , #708090);">
-                            <span style="font-size:15px">价格:</span><span style="margin-left:50%;color:red;">1111</span>
+                        <div style="width:100%;height:30px;margin-top:20px;border-radius:3px; background-image: linear-gradient(to right, #808080 , #708090);">
+                            <span style="font-size:15px;margin-left:5px;">价格:</span><span style="margin-left:10%;color:red;">{{price}}</span>
                         </div>
+                        <div style="font-size:15px;text-align:center;margin:20px 0;border-top:1px dotted #696969;border-bottom:1px dotted #696969;padding:10px 0;">累计评价:{{}}</div>
                     </div>
                 </el-col>
-            </el-row>         
+            </el-row>    
+            <el-container>
+                <el-main>                    
+                    <el-tabs value="first" type="card" >
+                        <el-tab-pane label="产品详情" name="first">
+                            <ul>
+                                <li v-for="item,index in details_img" :key="index">
+                                    <img :src="item" width="100%"/>
+                                </li>
+                            </ul>                        
+                        </el-tab-pane>
+                        <el-tab-pane label="评价" name="second">配置管理</el-tab-pane>
+                    </el-tabs>                 
+                </el-main>
+            </el-container>     
         </template>
+        
     </shell>
 </template>
 <script>
@@ -54,7 +70,9 @@ export default {
             small_img:[],
             big_img:[],
             magnify_img:[],
+            details_img:[],
             title:"",
+            price:0,
             i:0,
             hide:true,
             maskmove:{
@@ -65,10 +83,16 @@ export default {
     },
     methods:{
         moveleft(){
-            this.times++;
+            if(this.small_img.length<4){
+                return;
+            }else{
+                this.times++;
+             }
         },
         moveright(){
-            this.times--;
+            
+                this.times--;
+           
         },
         //采用事件委托的方式,为所有的图片绑定事件
         change_img(e){
@@ -98,16 +122,20 @@ export default {
         }
     },
     mounted(){
-        this.axios.get(`/api/products_details?id=${this.index}`).then(res=>{
+        this.axios.get(`/api/products_details?did=${this.index}`).then(res=>{
             let details = res.data.result;
+            console.log(details);
             let small_img = [];
             let big_img = [];
             let magnify_img = [];
+            let details_img = [];
             details.forEach(item=>{
                 small_img=item.small_img.split("丨");
                 big_img=item.big_img.split("丨");
                 magnify_img=item.magnify_img.split("丨");
+                details_img=item.details_img.split("丨");
                 this.title = item.title;
+                this.price = item.new_price;
             })
             this.small_img = small_img.map(item=>{
                 item = require(`../assets/products_details/${this.index}/`+item);
@@ -118,6 +146,10 @@ export default {
                 return item;
             })
              this.magnify_img = magnify_img.map(item=>{
+                item = require(`../assets/products_details/${this.index}/`+item);
+                return item;
+            })
+            this.details_img = details_img.map(item=>{
                 item = require(`../assets/products_details/${this.index}/`+item);
                 return item;
             })
@@ -187,5 +219,14 @@ export default {
 .shell .fd{
     width: 345px;
     height: 400px;
+}
+.shell .el-tabs__item{
+    color: #fff;
+}
+.shell .el-tabs__item:hover{
+    color: #409EFF;
+}
+.shell .el-main .is-active{
+    color: #409EFF;
 }
 </style>

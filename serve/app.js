@@ -185,10 +185,10 @@ server.get('/pk_products',(req,res)=>{
 
 //获取产品详情信息的接口
 server.get('/products_details',(req,res)=>{
-  let id = Number(req.query.id);
+  let did = Number(req.query.did);
   // console.log(req.query);
-  let sql = 'SELECT * FROM products_details,pk_products WHERE id=?'
-  pool.query(sql,[id],(err,result)=>{
+  let sql = 'select did,small_img,big_img,magnify_img,title,details_img,new_price from products_details inner join pk_products on did=id where did=?;'
+  pool.query(sql,[did],(err,result)=>{
     if(err) throw err;
     res.send({message:"ok",code:200,result:result});
   })

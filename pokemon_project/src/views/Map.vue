@@ -58,7 +58,7 @@
                   <div class="d2"><img src="https://cn.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" class="bg"/></div> 
                   <img :src="item.purl" class="pk"/>
                   <div class="attribute"></div>
-                  <img :src="item.pattr" alt="" class="attribute_img">                 
+                  <img :src="item.pattr" class="attribute_img" style="border-radius:10px;">                 
                 </div>
               </el-col>
             </el-row>
@@ -84,7 +84,7 @@
                   <div class="d2"><img src="https://cn.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" class="bg"/></div> 
                   <img :src="search_pokemon[0].purl" class="pk"/>
                   <div class="attribute"></div>
-                  <img :src="search_pokemon[0].pattr" class="attribute_img">                 
+                  <img :src="search_pokemon[0].pattr" class="attribute_img" style="border-radius:10px;">                 
                 </div>
               </el-col>
             </el-row>
