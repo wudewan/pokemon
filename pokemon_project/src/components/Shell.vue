@@ -53,12 +53,30 @@
                   >
                 </el-col>
                 <!-- 登录/注册 -->
-                <el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
-                  <el-button type="primary">登录</el-button>
-                </el-col>
-                <el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
-                  <el-button type="primary" plain>注册</el-button>
-                </el-col>
+                <div v-if="$store.state.islogin" style="margin-top:10px;">
+                  <el-col :xs="4" :sm="4" :md="4" :lg="4" :xl="4">                   
+                    <div style="display:flex;align-items:center;justify-content:center">
+                      <el-avatar :src="require('../../../serve/upload_avatar/'+$store.state.avatar)" style="margin-right:10px"></el-avatar>
+                      <el-dropdown @command="cancellation">
+                        <el-link type="success" style="color:#92D8E6;font-size:15px;font-weight:bolder">
+                          {{$store.state.username}}
+                        </el-link>
+                        <el-dropdown-menu slot="dropdown">
+                          <el-dropdown-item command="a">注销</el-dropdown-item>
+                        </el-dropdown-menu>
+                      </el-dropdown>    
+                    </div>      
+                  </el-col>
+                </div>
+                <div v-else>
+                  <el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
+                    <el-button type="primary" @click="login">登录</el-button>
+                  </el-col>
+                  <el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">
+                    <el-button type="primary" plain @click="regist">注册</el-button>
+                  </el-col>
+                </div>
+               
               </el-row>
             </el-menu>  
         </el-header>
@@ -79,7 +97,20 @@
 </template>
 <script>
 export default {
-  props:["activeIndex"]
+  props:["activeIndex"],
+  methods:{
+    login(){
+      this.$router.push("/login");
+    },
+    regist(){
+      this.$router.push("/register");
+    },
+    cancellation(command){
+      this.$store.commit("cancellation");
+      sessionStorage.setItem("islogin","false");
+      this.$router.push("/")
+    }
+  }
 }
 </script>
 <style>
@@ -87,4 +118,5 @@ export default {
 @import '../../public/css/map_style.css';
 @import '../../public/css/movies_style.css';
 @import '../../public/css/movies_details_style.css';
+@import '../../public/css/products_details_style.css'
 </style>

@@ -40,6 +40,57 @@ server.use(bodyParser.urlencoded({
 //   origin: ['http://localhost:8080', 'http://127.0.0.1:8080']
 // }));
 
+
+
+
+//注册接口
+server.post('/register',(req,res)=>{
+  //获取用户的用户名和密码
+  // console.log(req.body.avatar);
+  let username = req.body.username;
+  let password = req.body.password;
+  let avatar
+  if(req.body.avatar == ""){
+    avatar = "unload.png"
+  }else{
+    avatar = newPath
+  }
+  //以username为条件进行查找操作,以保证用户名的唯一性
+  let sql = 'SELECT COUNT(uid) AS count FROM app_user WHERE uname=?';
+  pool.query(sql,[username],(error,results)=>{
+    if(error) throw error;
+    let count = results[0].count;
+    if(count == 0){
+      //将用户的相关信息插入到数据表
+      sql = 'INSERT INTO app_user(uname,upwd,avatar) VALUES(?,MD5(?),?)';
+      pool.query(sql, [username,password,avatar], (error,results) =>{
+        if(error) throw error;
+        res.send({message:"ok",code:200})
+      });
+    }else{
+      res.send({message:'用户已经存在,请重新注册',code:201})
+    }
+  })
+
+})
+
+
+//登录接口
+server.post('/login',(req,res)=>{
+  let username = req.body.username;
+  let password = req.body.password;
+  let sql = 'SELECT * FROM app_user WHERE uname=? AND upwd=MD5(?)';
+  pool.query(sql,[username,password],(err,result)=>{
+    if(err) throw err;
+    if(result.length == 0){
+      res.send({message:'用户名或密码输入错误',code:201});//登录失败
+    }else{
+      res.send({message:'登录成功',code:200,result:result[0]}); //登录成功
+    }
+  })
+})
+
+
 //获取index首页的内容的接口
 server.get('/index',(req,res)=>{
   let sql = 'SELECT * FROM pokemon_index';
@@ -197,11 +248,16 @@ server.get('/products_details',(req,res)=>{
 
 //插入评论的接口
 server.post('/pk_comments',(req,res)=>{
+  let pid = Number(req.body.pid);
+  // console.log(pid);
   let score = req.body.score;
   let content = req.body.content;
+  let date = req.body.date;
+  let uname = req.body.uname;
+  let avatar = req.body.avatar;
   // console.log(score)
-  let sql = 'INSERT INTO comments(content,score) VALUES(?,?)'
-  pool.query(sql,[content,score],(err,result)=>{
+  let sql = `INSERT INTO comments_${pid}(content,score,riqi,uname,avatar) VALUES(?,?,?,?,?)`
+  pool.query(sql,[content,score,date,uname,avatar],(err,result)=>{
     if(err) throw err;
     res.send({message:"ok",code:200});
   })
@@ -209,7 +265,8 @@ server.post('/pk_comments',(req,res)=>{
 
 //获取评论的接口
 server.get("/pk_comments",(req,res)=>{
-  let sql = 'SELECT * FROM comments';
+  let pid = Number(req.query.pid);
+  let sql = `SELECT * FROM comments_${pid} ORDER BY cid DESC`;
   pool.query(sql,(err,result)=>{
     if(err) throw err;
     res.send({message:"ok",code:200,result:result});
@@ -222,18 +279,18 @@ global.$dirname = __dirname;
 const fs = require("fs");
 const formidable = require("express-formidable");
 let path = require("path");
+var newPath = "";
 server.use(formidable());
 server.post("/upload",(req,res)=>{
-  console.log(req.files);
+  // console.log(req.files);
   let oldP=req.files.file.path;
-  var userId = 1;
-  var f1 = path.join($dirname + "/upload_avatar/" + userId + "/");
+  var f1 = path.join($dirname + "/upload_avatar/"  + "/");
   let exts=req.files.file.name.split('.');
   let ext=exts[exts.length-1];
   let tepname=(new Date()).getTime()+parseInt(Math.random()*9999);
   let newP=f1+tepname+"."+ext;
-
-  console.log(newP);
+  newPath = tepname+"."+ext;
+  // console.log(newPath);
   // console.log(req.files.file.name);
   fs.rename(oldP,newP,()=>{
 
@@ -241,29 +298,7 @@ server.post("/upload",(req,res)=>{
   res.json({"status":0});
 })
 
-//注册接口
-server.post('/register',(req,res)=>{
-  //获取用户的用户名和密码
-  let username = req.body.username;
-  let password = req.body.password;
-  //以username为条件进行查找操作,以保证用户名的唯一性
-  let sql = 'SELECT COUNT(id) AS count FROM app_user WHERE uname=?';
-  pool.query(sql,[username],(error,result)=>{
-    if(error) throw error;
-    let count = results[0].count;
-    if(count == 0){
-      //将用户的相关信息插入到数据表
-      sql = 'INSERT app_user(uname,upwd) VALUES(?,MD5(?))';
-      pool.query(sql, [username,password], (error,results) =>{
-        if(error) throw error;
-        res.send({message:"ok",code:200})
-      });
-    }else{
-      res.send({message:'用户已经存在,请重新注册',code:201})
-    }
-  })
 
-})
 
 
 // 指定服务器对象监听的端口号

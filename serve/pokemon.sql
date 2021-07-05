@@ -7,13 +7,9 @@ USE app;
 /** 用户信息 **/
 CREATE TABLE app_user(
     uid INT PRIMARY KEY AUTO_INCREMENT,
-    uname   VARCHAR(32),
+    uname VARCHAR(32),
     upwd VARCHAR(32),
-    phone VARCHAR(11),
-    email   VARCHAR(64),
-    avatar VARCHAR(128),
-    user_name VARCHAR(32),
-    gender INT
+    avatar VARCHAR(128)
 );
 
 
@@ -157,8 +153,131 @@ INSERT INTO products_details(did,small_img,big_img,magnify_img,title,details_img
 (16,"small_1.jpg丨small_2.jpg丨small_3.jpg丨small_4.jpg丨small_5.jpg","big_1.jpg丨big_2.jpg丨big_3.jpg丨big_4.jpg丨big_5.jpg","magnify_1.jpg丨magnify_2.jpg丨magnify_3.jpg丨magnify_4.jpg丨magnify_5.jpg","keepplay宝可梦积木玩偶","details_1.jpg丨details_2.jpg丨details_3.jpg丨details_4.jpg丨details_5.jpg丨details_6.jpg丨details_7.jpg");
 
 
-CREATE TABLE comments(
+CREATE TABLE comments_1(
     cid INT PRIMARY KEY AUTO_INCREMENT,
     content VARCHAR(300) NOT NULL DEFAULT '好评',
-    score INT DEFAULT 3
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_2(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20),
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_3(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_4(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_5(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_6(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_7(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_8(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_9(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_10(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_11(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_12(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_13(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_14(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_15(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20), 
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
+);
+CREATE TABLE comments_16(
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(300) NOT NULL DEFAULT '好评',
+    score INT DEFAULT 3,
+    riqi VARCHAR(20),
+    uname VARCHAR(10),
+    avatar  VARCHAR(20)
 );

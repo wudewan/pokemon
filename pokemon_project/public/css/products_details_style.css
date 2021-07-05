@@ -1,0 +1,74 @@
+.is_display{
+    display: none;
+}
+.shell .left_products{
+    display: flex;
+    position: relative;
+    width: 345px;
+    flex-wrap: wrap;
+    height: 500px;
+    margin: 3vw 0vw;
+    border: 1px solid #6581C4;
+    border-radius: 10px;
+    padding: 10px;
+}
+.shell .big_img_{
+    width: 345px;
+    height: 400px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.shell .magnify{
+    position: absolute;
+    left: 100px;
+}
+
+.shell .small_img_{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 5px;
+    overflow: hidden;
+    width: 260px;
+    height: 60px;
+    margin-top: 5px;
+}
+.shell .left_products .bottom_{
+    display: flex;
+}
+
+.shell .left_products ul{
+    list-style: none;
+    display: flex;
+    height: 60px;
+}
+.shell .left_products  ul li{
+    margin: 0 10px;
+}
+.shell .left_products .small_img_ ul li :hover{
+    transform: scale(1.1); 
+    transition: 0.5s linear;
+}
+.shell .left_products .left,.shell .left_products .right{
+    width: 42px;
+    height: 60px;
+    margin-top: 5px;
+} 
+.shell .fd{
+    width: 345px;
+    height: 400px;
+}
+.shell .el-tabs__item{
+    color: #fff;
+}
+.shell .el-tabs__item:hover{
+    color: #409EFF;
+}
+.shell .el-main .is-active{
+    color: red;
+}
+.shell .el-tabs--card>.el-tabs__header .el-tabs__nav{
+    border-bottom: 1px solid #E4E7ED;
+    background-color: grey;
+}

@@ -41,7 +41,7 @@
                             <el-row>
                                 <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="11">月销量 <span style="color:red;">100+</span></el-col>
                                 <el-col :xs="2" :sm="2" :md="2" :lg="2" :xl="2">丨</el-col>               
-                                <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="11">累计评价:<span style="color:red;">{{count}}</span></el-col>                  
+                                <el-col :xs="11" :sm="11" :md="11" :lg="11" :xl="11">累计评价:<span style="color:red;">&nbsp;{{comments.length}}</span></el-col>                  
                             </el-row>                            
                         </div>
                         <div style="display:flex;position:relative;">
@@ -55,7 +55,7 @@
                         </div>
                         <div style="display:flex;justify-content:space-between;align-items:center;margin:20px 0" v-show="show">
                             <img src="../../public/img/true.png" width="5%"><span style="color:#1afa29;">商品已成功添加至购物车!</span> 
-                            <el-button  type="danger">去购物车结算<i class="el-icon-arrow-right"></i></el-button>
+                            <el-button  type="danger" @click="go_to_cart">去购物车结算<i class="el-icon-arrow-right"></i></el-button>
                         </div>
                         <div style="margin-top:40px">
                             <span style="font-size:17px">服务承诺:</span> <span style="font-size:13px">正品保证 丨 极速退款 丨 退货运费险 丨七天无理由退换</span>
@@ -88,19 +88,32 @@
                                     maxlength="100"
                                     show-word-limit
                                     :rows="3"
+                                    style="margin:10px 0"
                                     >
                                 </el-input>
                                 <el-button type="primary" style="width:100px" @click="insert_comments">提交</el-button>
                             </div>
                             <div style="border-top:3px solid #409EFF;border-bottom:3px solid #409EFF;margin-top:20px;padding:15px;font-size:16px">
                                 <div style="border-top:1px solid #696969;margin-bottom:10px;padding:10px 0;color:#fff;" v-for="item,index in comments" :key="index">
+                                    
                                     <el-rate
                                         :value="item.score"
                                         show-text
                                         text-color="#fff"
                                         >
                                     </el-rate>
-                                    <p>{{item.content}}</p>
+                                    <div style="display:flex;align-items:center;margin:10px 0;">
+                                        <el-avatar :src="require('../../../serve/upload_avatar/'+item.avatar)" style="margin-right:10px"></el-avatar>
+                                        
+                                        <el-link type="success" style="color:#92D8E6;font-size:15px;font-weight:bolder">
+                                        {{item.uname}}
+                                        </el-link>
+                                         
+                                    </div> 
+                                    <div style="display:flex;justify-content:space-between">
+                                        <p>{{item.content}}</p>      
+                                        <p>{{item.riqi}}</p>                                  
+                                    </div>
                                 </div>
                             </div>
                         </el-tab-pane>
@@ -118,6 +131,7 @@ export default {
     props:["index"],
     data(){
         return{
+            date:new Date().toLocaleDateString(),
             times:0,
             small_img:[],
             big_img:[],
@@ -132,11 +146,12 @@ export default {
                 left:0
             },
             num1:0,
-            count:0,
             show:false,
             textarea:"",
             value:null,
-            comments:[]
+            comments:[],
+            uname: this.$store.state.username,
+            avatar:this.$store.state.avatar
         }
     },
     methods:{
@@ -179,7 +194,12 @@ export default {
             this.maskmove.left = left-75+"px";
         },
         join_cart(){
-            if(this.num1 == 0){
+            if(!this.$store.state.islogin){
+                this.$message({
+                    message: '你不登陆,我很难为你办事啊!',
+                    type: 'warning'
+                });
+            }else if(this.num1 == 0){
                 this.show = false;
                 this.$message({
                     message: '请选择商品数量',
@@ -190,17 +210,40 @@ export default {
             }
         },
         insert_comments(){
-            this.axios.post("/api/pk_comments",`content=${this.textarea}&score=${this.value}`).then(result=>{
-                if(result.data.code==200){
-                    this.$message({
-                    message: '感谢您的评论',
-                    type: 'success'
-                    });
-                }
-            }).then(this.axios.get("/api/pk_comments").then(result=>{
-                console.log(result.data.result);
-                this.comments = result.data.result;
-            })).then(history.go)
+            if(!this.$store.state.islogin){
+                this.$message({
+                    message: '你不登陆,我很难为你办事啊!',
+                    type: 'warning'
+                });
+            }else if(this.textarea == ""){
+                this.$message({
+                    message: '请填写评论内容',
+                    type: 'error'
+                });
+            }else if(this.value == ""){
+                this.$message({
+                    message: '请给出至少一星的评价',
+                    type: 'error'
+                });
+            }else{
+                this.axios.post("/api/pk_comments",`pid=${this.index}&content=${this.textarea}&score=${this.value}&date=${this.date}&uname=${this.uname}&avatar=${this.avatar}`).then(result=>{
+                    if(result.data.code==200){
+                        this.$message({
+                        message: '感谢您的评论',
+                        type: 'success'
+                        });
+                    }
+                }).then(this.axios.get(`/api/pk_comments?pid=${this.index}`).then(result=>{
+                    console.log(result.data.result);
+                    this.comments = result.data.result;
+                })).then(()=>{
+                    history.go(0);
+                    scrollTo(0,0);
+                })
+            }
+        },
+        go_to_cart(){
+            this.$router.push(`/cart/${this.title}/${this.num1}/${this.price}`);
         }
     },
     mounted(){
@@ -237,86 +280,14 @@ export default {
             })
         });
 
-        this.axios.get("/api/pk_comments").then(result=>{
+        this.axios.get(`/api/pk_comments?pid=${this.index}`).then(result=>{
                 this.comments = result.data.result;
+                console.log(this.comments);
         })
     }
     
 }
 </script>
 <style>
-.is_display{
-    display: none;
-}
-.shell .left_products{
-    display: flex;
-    position: relative;
-    width: 345px;
-    flex-wrap: wrap;
-    height: 500px;
-    margin: 3vw 0vw;
-    border: 1px solid #6581C4;
-    border-radius: 10px;
-    padding: 10px;
-}
-.shell .big_img_{
-    width: 345px;
-    height: 400px;
-    display: flex;
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-}
-.shell .magnify{
-    position: absolute;
-    left: 100px;
-}
 
-.shell .small_img_{
-    display: flex;
-    flex-wrap: nowrap;
-    margin-top: 5px;
-    overflow: hidden;
-    width: 260px;
-    height: 60px;
-    margin-top: 5px;
-}
-.shell .left_products .bottom_{
-    display: flex;
-}
-
-.shell .left_products ul{
-    list-style: none;
-    display: flex;
-    height: 60px;
-}
-.shell .left_products  ul li{
-    margin: 0 10px;
-}
-.shell .left_products .small_img_ ul li :hover{
-    transform: scale(1.1); 
-    transition: 0.5s linear;
-}
-.shell .left_products .left,.shell .left_products .right{
-    width: 42px;
-    height: 60px;
-    margin-top: 5px;
-} 
-.shell .fd{
-    width: 345px;
-    height: 400px;
-}
-.shell .el-tabs__item{
-    color: #fff;
-}
-.shell .el-tabs__item:hover{
-    color: #409EFF;
-}
-.shell .el-main .is-active{
-    color: red;
-}
-.shell .el-tabs--card>.el-tabs__header .el-tabs__nav{
-    border-bottom: 1px solid #E4E7ED;
-    background-color: grey;
-}
 </style>
