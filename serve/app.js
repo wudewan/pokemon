@@ -273,6 +273,43 @@ server.get("/pk_comments",(req,res)=>{
   })
 })
 
+//删除评论的接口
+server.delete("/del",(req,res)=>{
+  let cid = req.query.cid;
+  let pid = req.query.pid;
+  sql = `DELETE FROM comments_${pid} WHERE cid = ?`;
+  pool.query(sql,[cid],(err,result)=>{
+    if(err) throw err;
+    if(result.affectedRows > 0){
+      res.send({message:"删除成功",code:200});
+    }else{
+      res.send({message:"删除失败",code:201});
+    }
+  })
+})
+
+// 插入购物车的接口
+server.post("/cart",(req,res)=>{
+  let uname = req.body.uname;
+  let pname = req.body.pname;
+  let count = req.body.count;
+  let price = req.body.price;
+  sql = `INSERT INTO cart(uname,pname,count,price) VALUES(?,?,?,?)`;
+  pool.query(sql,[uname,pname,count,price],(err,result)=>{
+    if(err) throw err;
+    res.send({message:"ok",code:200});
+  })
+})
+
+// 获取购物内容的接口
+server.get("/cart",(req,res)=>{
+  let uname = req.query.uname;
+  sql = 'SELECT * FROM cart WHERE uname = ?';
+  pool.query(sql,[uname],(err,result)=>{
+    if(err) throw err;
+    res.send({message:"OK",code:200,result});
+  })
+})
 
 //获取上传头像保存在upload_avatar文件夹下,根据注册ID分文件夹保存
 global.$dirname = __dirname;

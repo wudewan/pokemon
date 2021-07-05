@@ -275,9 +275,20 @@ CREATE TABLE comments_15(
 );
 CREATE TABLE comments_16(
     cid INT PRIMARY KEY AUTO_INCREMENT,
-    content VARCHAR(300) NOT NULL DEFAULT '好评',
-    score INT DEFAULT 3,
+    content VARCHAR(300) NOT NULL,
+    score INT NOT NULL,
     riqi VARCHAR(20),
     uname VARCHAR(10),
     avatar  VARCHAR(20)
+);
+
+
+/* 购物车*/
+CREATE TABLE cart(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    uname VARCHAR(10),
+    pname VARCHAR(100),
+    count INT(5),
+    price INT(5),
+    checked BOOLEAN DEFAULT false
 );

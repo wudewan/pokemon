@@ -10,7 +10,7 @@
           </div>
           <div style="margin: 20px 0; position: relative">
             密码:
-            <el-input v-model="password" type="password"></el-input>
+            <el-input v-model="password" type="password" @change="login"></el-input>
           </div>
             <el-button
             type="primary"

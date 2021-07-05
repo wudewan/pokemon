@@ -95,13 +95,18 @@
                             </div>
                             <div style="border-top:3px solid #409EFF;border-bottom:3px solid #409EFF;margin-top:20px;padding:15px;font-size:16px">
                                 <div style="border-top:1px solid #696969;margin-bottom:10px;padding:10px 0;color:#fff;" v-for="item,index in comments" :key="index">
-                                    
-                                    <el-rate
-                                        :value="item.score"
-                                        show-text
-                                        text-color="#fff"
-                                        >
-                                    </el-rate>
+                                    <div style="display:flex;justify-content:space-between;width:100%">
+                                        <el-rate
+                                            :value="item.score"
+                                            show-text
+                                            text-color="#fff"
+                                            >
+                                        </el-rate>
+                                        <div class="del" v-show="$store.state.islogin && item.uname==$store.state.username" @click="del(item.cid)"> 
+                                            <i class="el-icon-delete"></i>
+                                        </div>
+                                    </div>
+                                   
                                     <div style="display:flex;align-items:center;margin:10px 0;">
                                         <el-avatar :src="require('../../../serve/upload_avatar/'+item.avatar)" style="margin-right:10px"></el-avatar>
                                         
@@ -155,6 +160,22 @@ export default {
         }
     },
     methods:{
+        del(cid){
+            this.axios.delete(`/api/del?cid=${cid}&pid=${this.index}`).then(result=>{
+                if(result.data.code == 200){
+                    this.$message({
+                        message: result.data.message,
+                        type: 'success'
+                    });
+                    history.go(0);
+                }else{
+                     this.$message({
+                        message: result.data.message,
+                        type: 'error'
+                    });
+                }
+            })
+        },
         moveleft(){
             if(this.small_img.length<4){
                 return;
@@ -207,7 +228,11 @@ export default {
                 });
             }else{
                 this.show = true;
+                this.axios.post("/api/cart",`uname=${this.uname}&pname=${this.title}&count=${this.num1}&price=${this.price}`).then(result=>{
+                console.log(result);
+            })
             }
+          
         },
         insert_comments(){
             if(!this.$store.state.islogin){
@@ -243,7 +268,7 @@ export default {
             }
         },
         go_to_cart(){
-            this.$router.push(`/cart/${this.title}/${this.num1}/${this.price}`);
+            this.$router.push(`/cart`);
         }
     },
     mounted(){
@@ -289,5 +314,8 @@ export default {
 }
 </script>
 <style>
-
+.shell .el-main .del :hover{
+    cursor: pointer;
+    transform:scale(1.5) ;
+}
 </style>
