@@ -70,7 +70,6 @@ export default {
     //获取所有首页页面文字信息
     this.axios.get("/api/index").then(result=>{
       this.index = result.data.result[0];
-      console.log(this.index);
     })
   },
 };

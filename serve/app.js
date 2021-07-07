@@ -311,6 +311,21 @@ server.get("/cart",(req,res)=>{
   })
 })
 
+
+// 删除购物车的内容
+server.delete("/del_cart",(req,res)=>{
+  let id = req.query.id;
+  sql = 'DELETE FROM cart WHERE id = ?';
+  pool.query(sql,[id],(err,result)=>{
+    if(err) throw err;
+    if(result.affectedRows > 0){
+      res.send({message:"删除成功",code:200});
+    }else{
+      res.send({message:"删除失败",code:201});
+    }
+  })
+})
+
 //获取上传头像保存在upload_avatar文件夹下,根据注册ID分文件夹保存
 global.$dirname = __dirname;
 const fs = require("fs");
